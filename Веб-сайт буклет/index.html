@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Открытка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&subset=cyrillic&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#f3f0ff; --night:#16143a; --vw:1vw; } 
+* { box-sizing:border-box; margin:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--night); color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif; line-height:1.6; overflow-x:hidden; }
+
+.px { position:relative; overflow:hidden; }
+.layer { position:absolute; left:0; top:0; width:100%; height:100%;
+  background:var(--img) center/cover no-repeat; will-change:transform; pointer-events:none; }
+.ph { background:radial-gradient(circle at var(--x) 50%, var(--c) 0 5vmin, transparent 5.3vmin) 0 0/100% 55vh repeat-y; }
+
+.hero { height:100vh; height:100svh; }
+.stage { position:absolute; inset:0; }
+
+.hint { position:absolute; left:50%; bottom:max(24px,env(safe-area-inset-bottom)); z-index:10;
+  transform:translateX(-50%); white-space:nowrap;
+  padding:.75em 1.6em; border-radius:999px;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif; font-weight:600;
+  font-size:clamp(.95rem,2.6vw,1.25rem);
+  color:#276CB3; 
+  background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(14px) saturate(160%); backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 8px 32px rgba(31,38,135,.25), inset 0 1px 0 rgba(255,255,255,.6); }
+
+@media (max-width:700px), (max-aspect-ratio:11/10) {
+  .hint { font-size:.48rem; }
+}
+
+.story { overflow:hidden; }
+.blk { position:relative; width:100%; z-index:1; }
+.blk.gap { height:calc(55 * var(--vw)); }                  
+.blk .bg { position:absolute; left:0; top:0; width:100%; height:100%; display:block; }
+.it { position:absolute; left:var(--l); top:var(--t); width:var(--w); z-index:2; will-change:transform;
+  display:grid; place-items:center; border:2px dashed #fff; background:rgba(255,255,255,.28);
+  color:#fff; font:600 max(10px,calc(1.5 * var(--vw)))/1 "Inter",system-ui,sans-serif; text-shadow:0 1px 3px rgba(0,0,0,.4); }
+.it::after { content:attr(data-n); }
+.photo { aspect-ratio:4/5; }
+.text  { min-height:calc(11 * var(--vw)); }
+.deco  { aspect-ratio:1; border-radius:50%; }
+.clean .it { border:0; background:none; text-shadow:none; }
+.clean .it::after { content:none; }
+.it img, .it.solo { transition:opacity .7s ease; }
+.hid { opacity:0; }
+
+.end { background:#fff; color:#14213d; min-height:100vh; min-height:100svh;
+  padding:clamp(32px,6vw,72px) 6vw 12vh; display:flex; flex-direction:column; align-items:center;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif; }
+.cta { display:inline-block; text-decoration:none; background:#0D3D8F; color:#fff;
+  font:600 clamp(1rem,2.2vw,1.25rem)/1 "Inter",system-ui,sans-serif;
+  padding:1em 2.2em; border-radius:999px; box-shadow:0 6px 20px rgba(13,61,143,.3);
+  transition:transform .2s, box-shadow .2s, background .2s; }
+.cta:hover { transform:translateY(-2px); background:#0F0275; box-shadow:0 10px 26px rgba(13,61,143,.4); }
+.cta:focus-visible { outline:3px solid #276CB3; outline-offset:3px; }
+.end-text { max-width:42rem; margin-top:clamp(28px,6vw,64px); text-align:center;
+  font-size:clamp(1rem,2.4vw,1.2rem); line-height:1.6; }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<header class="px hero" data-parallax>
+ <div class="stage" id="stage">
+  <div class="layer" data-speed="0">
+    <img src="image 157.png" style="height: 100%; width: 100%;">
+  </div>
+  <div class="layer" data-speed="0.5" style="height: 20%; width: 100%; margin-top: 0%; background-color: #ACD8F2; box-shadow: 0px -5px 10px 8px rgba(0, 0, 0, 0.5)"></div>
+  <div class="layer" data-speed="0.5" style="height: 30%; width: 100%; margin-top: 40%; background-color: #DEF5FF; box-shadow: 0px -5px 10px 2px rgba(0, 0, 0, 0.5);"></div>
+  <div class="layer" data-speed="0.15" style="height: 100%; width: 100%; margin-left: -18%; margin-top: -10%;">
+    <img src="Лучи.svg">
+  </div>
+  <div class="layer" data-speed="0.15" style="height: 100%; width: 100%; margin-left: 60%; margin-top: 8%;">
+    <img src="Оп бирюза.png">
+  </div>
+  <div class="layer" data-speed="0.3" style="margin-left: 60%; margin-top: 15%;">
+    <img src="Кругляшки.png" style="height: 65%; width: 40%; background-size: 100% 100%;">
+  </div>
+  <div class="layer" data-speed="0.3" style="margin-left: 80%; margin-top: 10%;">
+    <img src="Мазок 2.png" style="height: 70%; width: 20%;">
+  </div>
+  <div class="layer" data-speed="0.45" style="height: 100%; width: 100%; margin-left: 3%;">
+    <img src="Лучи зеленые.png">
+  </div>
+  <div class="layer" data-speed="0.45" style="height: 100%; width: 100%; margin-left: 66%; margin-top: 16%;">
+    <img src="Оп роз.png" style="box-shadow: 0px -5px 10px 8px rgba(100, 137, 216, 0.5)">
+  </div>
+  <div class="layer" data-speed="0.55" style="height: 100%; width: 100%; margin-left: 9%; margin-top: 13%;">
+    <img src="ТВОРИ С.png">
+  </div>
+  <div class="layer" data-speed="0.60" style="height: 100%; width: 100%; margin-left: 8%; margin-top: 17.5%;">
+    <img src="Фон слова АГУИККИ.png">
+  </div>
+  <div class="layer" data-speed="0.65" style="height: 100%; width: 100%; margin-left: 8%; margin-top: 18%;">
+    <img src="АГУИККИ.png">
+  </div>
+  <div class="layer" data-speed="0.65" style="height: 100%; width: 100%; margin-left: 40%; margin-top: 25%;">
+    <img src="Ноты.png">
+  </div>
+  <div class="layer" data-speed="0.75" style="height: 100%; width: 100%; margin-left: 62%; margin-top: 9%;">
+    <img src="задн танц.png">
+  </div>
+  <div class="layer" data-speed="0.75" style="height: 100%; width: 100%; margin-left: 5%; margin-top: 9%;">
+    <img src="Палитра.png">
+  </div>
+  <div class="layer" data-speed="0.8" style="height: 100%; width: 100%; margin-left: 10%; margin-top: 30%;">
+    <img src="Зад твой талант.png">
+  </div>
+  <div class="layer" data-speed="0.8" style="height: 100%; width: 100%; margin-left: 12%; margin-top: 38%;">
+    <img src="Фотик.png">
+  </div>
+  <div class="layer" data-speed="0.85" style="height: 100%; width: 100%; margin-left: 13%; margin-top: 31%;">
+    <img src="Твой талант - твой путь.png">
+  </div>
+  <div class="layer" data-speed="0.9" style="height: 100%; width: 100%; margin-left: 59%; margin-top: 9%;">
+    <img src="челик танц.png">
+  </div>
+  <div class="layer" data-speed="0.9" style="height: 100%; width: 100%; margin-left: 38%; margin-top: 32%;">
+    <img src="Микрофон.png">
+  </div>
+  <div class="layer" data-speed="0.95" style="height: 100%; width: 100%; margin-left: 88%; margin-top: 4%;">
+    <img src="Mask group.png">
+  </div>
+  <div class="layer" data-speed="0.95" style="height: 100%; width: 100%; margin-left: 42%; margin-top: 12%;">
+    <img src="Воскл зн.png">
+  </div>
+  <div class="layer" data-speed="0.95" style="height: 100%; width: 100%; margin-left: 0%; margin-top: 20%;">
+    <img src="Мазок.png">
+  </div>
+ </div>  <div class="hint">Найди свое направление</div>
+</header>
+
+<main class="px story clean" data-parallax>
+  <div class="layer" data-speed="0.4" style="--img:linear-gradient(#0D3D8F,#0F0275)"></div>
+
+    <section class="blk wave" style="aspect-ratio:1440/971">
+    <img class="bg" src="Фон1.png" alt="">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%; margin-top: -24%; margin-left: -30%;">
+      <img src="НАПРАВЛЕНИЯ.png">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%; margin-top: -10%; margin-left: -30%;">
+      <img src="Vector 64.png">
+    </div>
+    <div class="it photo" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%; margin-top: -3%; margin-left: -20%;">
+      <img src="Дизайн фт.png">
+    </div>
+    <div class="it photo" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%; margin-top: 10%; margin-left: -35%;">
+      <img src="Дизайн.png">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="height: 100%; width: 100%; margin-top: -5%; margin-left: 25%;">
+      <img src="Проектирование визуальных образов и цифровых продуктов. Направление включает анимацию, геймдизайн, цифровой дизайн среды и интерьера.png" style="height: 32%; width: 32%;">
+    </div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="height: 100%; width: 100%;">
+      <img src="Звезда.png" style="margin-top: -50%; margin-left: 80%;">
+    </div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="height: 100%; width: 100%;">
+      <img src="Звезда.png" style="margin-top: 10%; margin-left: 10%;">
+    </div>
+  </section>
+
+  <section class="blk gap" style="aspect-ratio:1440/1926; margin-top:20vw">
+    <div class="it photo" data-speed="0.75" data-n="height: 100%; width: 100%;">
+      <img src="Component 64.png" style="margin-left: 220%; margin-top: -110%;">
+    </div>
+    <div class="it photo" data-speed="0.9" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Анимация и гейм фт.png" style="margin-left: 45%; margin-top: -52%;">
+    </div>
+    <div class="it text" data-speed="1.25" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Создание анимации, персонажей и игровых миров. Направление объединяет рисунок, цифровую графику, разработку игровых механик и визуаль.png" style="margin-left: -50%; margin-top: -65%; height: 40%; width: 25%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Анимация и геймдизайн.png" style="margin-left: 45%; margin-top: -12%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="height: 100%; width: 100%;">
+      <img src="Vector 70.png" style="margin-left: 5%; margin-top: 90%;">
+    </div>
+    <div class="it photo" data-speed="0.9" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Акт фт.png" style="margin-left: -50%; margin-top: 30%;">
+    </div>
+    <div class="it text" data-speed="1.25" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Актерское искусство.png" style="margin-left: -52%; margin-top: 70%;">
+    </div>
+    <div class="it text" data-speed="1.25" data-n="Текст 1">
+      <img src="Подготовка артистов эстрады. Студенты учатся работать на сцене, развивают речь, пластику и сценическое мастерство.png" style="margin-left: 380%; margin-top: 120%; height: 30%; width: 95%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="height: 100%; width: 100%;">
+      <img src="Ellipse 47.png" style="margin-top: -10%; margin-left: -15%;">
+    </div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="height: 100%; width: 100%;">
+      <img src="Ellipse 47.png" style="margin-top: 30%; margin-left: 80%;">
+    </div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="height: 100%; width: 100%;">
+      <img src="Ellipse 47.png" style="margin-top: 50%; margin-left: 20%;">
+    </div>
+  </section>
+
+  <section class="blk wave" style="aspect-ratio:1440/1926">
+    <img class="bg" src="Vector 79.png" alt="">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 69.png" style="margin-top: -50%; margin-left: 40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Живопись фт.png" style="margin-top: -60%; margin-left: 50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Обучение художников_ станковая живопись, книжная графика, иллюстрация и мультипликация. Основа программ - рисунок, композиция и работа.png" style="margin-top: -40%; margin-left: -50%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Живопись и графика.png" style="margin-top: -15%; margin-left: 50%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 71.png" style="margin-top: 30%; margin-left: -40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Хорео фт.png" style="margin-top: 50%; margin-left: -50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Подготовка специалистов по художественному руководству в хореографии. Студенты изучают танец, постановку номеров и работу с творческ.png" style="margin-top: 30%; margin-left: 50%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Хореография.png" style="margin-top: 90%; margin-left: -50%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="--l:40%;--t:6%;--w:8%"></div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="--l:80%;--t:52%;--w:10%"></div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="--l:30%;--t:80%;--w:9%"></div>
+  </section>
+
+   <section class="blk wave" style="aspect-ratio:1440/2313; margin-top: -20vw">
+    <img class="bg" src="фон напр.png" alt="">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 66.png" style="margin-top: -120%; margin-left: 35%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 65.png" style="margin-top: -90%; margin-left: 50%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Муз фт.png" style="margin-top: -145%; margin-left: 50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Обучение игре на инструментах и музыкальной педагогике. Программы связаны с исполнительством, преподаванием и использованием цифровы.png" style="margin-top: -100%; margin-left: -40%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Музыка.png" style="margin-top: -85%; margin-left: 50%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 72.png" style="margin-top: -20%; margin-left: -40%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Медиакомм фт.png" style="margin-top: -20%; margin-left: -40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Медиакоммуникации.png" style="margin-top: 5%; margin-left: -47%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Работа с информацией и контентом в цифровой среде. Направление включает продвижение проектов, создание медиаматериалов и коммуникаци.png" style="margin-top: -15%; margin-left: 35%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Музыка.png" style="margin-top: -85%; margin-left: 50%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 68.png" style="margin-top: 80%; margin-left: 10%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 67.png" style="margin-top: 60%; margin-left: 40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Культур и арт фт.png" style="margin-top: 110%; margin-left: 40%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Изучение культуры, искусства и их роли в обществе. Студенты учатся создаватьи организовывать культурные проекты_ выставки, фестивали,.png" style="margin-top: 70%; margin-left: -45%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Культурология и арт-проектирование.png" style="margin-top: 140%; margin-left: 50%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="height: 100%; width: 100%;">
+      <img src="Component 66.png" style="margin-top: -30%; margin-left: 0%;">
+    </div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="height: 100%; width: 100%;">
+      <img src="Component 66.png" style="margin-top: 90%; margin-left: -70%;">
+    </div>
+  </section>
+
+  <section class="blk gap">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 73.png" style="margin-top: -10%; margin-left: -50%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Музей фт.png" style="margin-top: -10%; margin-left: -50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Сохранение и представление культурного и природного наследия. Студенты изучают музейное дело и цифровые технологии в музейной сфере..png" style="margin-top: 0%; margin-left: 50%;"> 
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Музеология.png" style="margin-top: 40%; margin-left: -50%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="--l:70%;--t:8%;--w:8%"></div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="--l:46%;--t:60%;--w:10%"></div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="--l:84%;--t:78%;--w:9%"></div>
+  </section>
+
+   <section class="blk wave" style="aspect-ratio:1440/2154;">
+    <img class="bg" src="Vector 110.png" alt="">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 74.png" style="margin-top: -60%; margin-left: 35%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Мода и ювелир фт.png" style="margin-top: -90%; margin-left: 45%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Создание украшений и модных образов. Студенты учатся разрабатывать эскизы, работать с материалами и соединять традиционное мастерств.png" style="margin-top: -60%; margin-left: -40%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Ювелирный дизайн и мода.png" style="margin-top: -40%; margin-left: 35%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 75.png" style="margin-top: 20%; margin-left: -40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Соц-культ фт.png" style="margin-top: 30%; margin-left: -40%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Организация культурной жизни и творческих проектов. Студенты учатся планировать и проводить мероприятия, работать с аудиторией, управ.png" style="margin-top: 30%; margin-left: 30%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Социально-культурная деятельность.png" style="margin-top: 75%; margin-left: -20%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="--l:40%;--t:6%;--w:8%"></div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="--l:80%;--t:52%;--w:10%"></div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="--l:30%;--t:80%;--w:9%"></div>
+  </section>
+
+   <section class="blk gap" style="margin-top: 40vw">
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 76.png" style="margin-top: -100%; margin-left: 40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Информатики фт.png" style="margin-top: -150%; margin-left: 50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Разработка и применение цифровых решений в креативных индустриях. Студенты работают с данными, интерфейсами и технологиями для культу.png" style="margin-top: -100%; margin-left: -50%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Прикладная информатика.png" style="margin-top: -100%; margin-left: 50%;">
+    </div>
+    <div class="it photo" data-speed="0.75" data-n="Фото 1" style="height: 100%; width: 100%;">
+      <img src="Vector 77.png" style="margin-top: -10%; margin-left: -40%;">
+    </div>
+    <div class="it photo" data-speed="1.25" data-n="Фото 2" style="height: 100%; width: 100%;">
+      <img src="Кинопроизв фт.png" style="margin-top: -20%; margin-left: -50%;">
+    </div>
+    <div class="it text" data-speed="0.9" data-n="Текст 1" style="height: 100%; width: 100%;">
+      <img src="Подготовка специалистов регионального кино. Студенты изучают сценарную работы, съемочный процесс и создание фильмов о культуре и жизн.png" style="margin-top: -20%; margin-left: 40%;">
+    </div>
+    <div class="it text" data-speed="1.1" data-n="Текст 2" style="height: 100%; width: 100%;">
+      <img src="Кинопроизводство.png" style="margin-top: 35%; margin-left: -50%;">
+    </div>
+    <div class="it deco" data-speed="0.5" data-n="Декор 1" style="--l:40%;--t:6%;--w:8%"></div>
+    <div class="it deco" data-speed="1.4" data-n="Декор 2" style="--l:80%;--t:52%;--w:10%"></div>
+    <div class="it deco" data-speed="0.65" data-n="Декор 3" style="--l:30%;--t:80%;--w:9%"></div>
+  </section>
+</main>
+
+<footer class="end">
+  <a class="cta" href="https://aguikki.ru" target="_blank" rel="noopener noreferrer">Перейти на сайт</a>
+  <div class="end-text" style="height: 100%; width: 100%;">
+    <img src="image 159.png" style="height: 100%; width: 100%;">
+  </div>
+</footer>
+
+<script>
+const DESIGN_W = 1440, DESIGN_H = 760;
+const STORY_W = 1440;
+const MOBILE_ZOOM = 1;
+const MOBILE_K = 0.6;
+
+const hero = document.querySelector('.hero');
+const stage = document.getElementById('stage');
+const story = document.querySelector('.story');
+if (!hero || !story) console.warn('Вставьте свой код (header и main) на место комментария.');
+const wrap = document.createElement('div');
+if (story) { story.before(wrap); wrap.appendChild(story); }
+document.querySelectorAll('.story [style*="vw"]').forEach(el => {
+  el.setAttribute('style', el.getAttribute('style')
+    .replace(/(-?[\d.]+)vw/g, 'calc($1 * var(--vw))'));
+});
+
+const layers = [...document.querySelectorAll('[data-speed]')].map(el => ({
+  el, s: parseFloat(el.dataset.speed), box: el.closest('[data-parallax]'),
+  zone: el.closest('#stage') ? 'hero' : 'story', item: el.classList.contains('it')
+}));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let heroScale = 1, storyScale = 1, phone = false, queued = false;
+function fit() {
+  if (!hero || !story) return;
+  phone = innerWidth < 700 || innerWidth / innerHeight < 1.1;
+  if (!phone) {
+    stage.style.cssText = ''; hero.style.height = '';
+    story.style.cssText = ''; wrap.style.cssText = '';
+    heroScale = storyScale = 1; return;
+  }
+  heroScale = innerWidth / DESIGN_W * MOBILE_ZOOM;
+  stage.style.cssText =
+    `inset:auto;top:0;width:${DESIGN_W}px;height:${DESIGN_H}px;` +
+    `left:${(innerWidth - DESIGN_W * heroScale) / 2}px;` +
+    `transform:scale(${heroScale});transform-origin:0 0;`;
+  hero.style.height = (DESIGN_H * heroScale) + 'px';
+
+  storyScale = innerWidth / STORY_W;
+  story.style.cssText =
+    `width:${STORY_W}px;--vw:${STORY_W / 100}px;` +
+    `transform:scale(${storyScale});transform-origin:0 0;`;
+  wrap.style.cssText = `height:${story.offsetHeight * storyScale}px;overflow:hidden;`;
+}
+
+function update() {
+  queued = false;
+  const vh = innerHeight, k = phone ? MOBILE_K : 1;
+  for (const L of layers) {
+    const r = L.box.getBoundingClientRect();
+    if (r.bottom < -50 || r.top > vh + 50) continue;
+    let shift;
+    if (L.item) {
+      const p = L.el.parentElement.getBoundingClientRect();
+      shift = reduce ? 0 : (L.s - 1) * ((p.top + p.height / 2) - vh / 2) * k;
+    } else {
+      const scrolled = Math.min(Math.max(-r.top, 0), r.height);
+      shift = reduce ? 0 : scrolled * (1 - L.s) * k;
+    }
+    shift /= (L.zone === 'hero' ? heroScale : storyScale);  
+    L.el.style.transform = `translate3d(0,${shift.toFixed(1)}px,0)`;
+  }
+}
+function onScroll() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+function onResize() { fit(); onScroll(); }
+
+if (!reduce && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(
+    es => es.forEach(e => e.target.classList.toggle('hid', !e.isIntersecting)),
+    { rootMargin: '-8% 0px -8% 0px' });   
+  document.querySelectorAll('.story .it').forEach(it => {
+    const imgs = it.querySelectorAll('img');
+    if (imgs.length) imgs.forEach(i => io.observe(i));
+    else { it.classList.add('solo'); io.observe(it); }
+  });
+}
+
+addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', onResize);
+addEventListener('load', onResize);
+fit(); update();
+</script>
+</body>
+</html>
